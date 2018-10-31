@@ -1,0 +1,6 @@
+venkatraman@venkatraman-Inspiron-5447:~/Desktop/ENPM808/HW/Week8/catkin_ws/src$ cppcheck ./beginner_tutorials
+Checking beginner_tutorials/src/listener.cpp...
+1/2 files checked 50% done
+Checking beginner_tutorials/src/talker.cpp...
+2/2 files checked 100% done
+

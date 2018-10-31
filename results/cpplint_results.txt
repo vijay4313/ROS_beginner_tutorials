@@ -1,0 +1,13 @@
+venkatraman@venkatraman-Inspiron-5447:~/Desktop/ENPM808/HW/Week8/catkin_ws/src$ cpplint --recursive --extension=cpp,h,hpp ./beginner_tutorials
+beginner_tutorials/src/talker.cpp:49:  Found C++ system header after other header. Should be: talker.h, c system, c++ system, other.  [build/include_order] [4]
+beginner_tutorials/src/talker.cpp:60:  { should almost always be at the end of the previous line  [whitespace/braces] [4]
+beginner_tutorials/src/talker.cpp:116:  { should almost always be at the end of the previous line  [whitespace/braces] [4]
+Done processing beginner_tutorials/src/talker.cpp
+beginner_tutorials/src/listener.cpp:56:  { should almost always be at the end of the previous line  [whitespace/braces] [4]
+beginner_tutorials/src/listener.cpp:62:  { should almost always be at the end of the previous line  [whitespace/braces] [4]
+Done processing beginner_tutorials/src/listener.cpp
+
+venkatraman@venkatraman-Inspiron-5447:~/Desktop/ENPM808/HW/Week8/catkin_ws/src$ cpplint --recursive --extension=cpp,h,hpp ./beginner_tutorials
+Done processing beginner_tutorials/src/talker.cpp
+Done processing beginner_tutorials/src/listener.cpp
+
