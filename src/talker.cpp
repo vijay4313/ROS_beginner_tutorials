@@ -45,9 +45,23 @@
  */
 
 #include <sstream>
+#include <cstdlib>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
+#include "beginner_tutorials/changeText.h"
 
+std::string message = "My name is Venkat";
+
+
+
+bool modifyText(beginner_tutorials::changeText::Request  &req,
+                beginner_tutorials::changeText::Response &res) {
+    
+    message = req.inpString;
+    res.outString = "The user changed the message to: " + req.inpString;
+    ROS_WARN("Setting the Publisher Text to: %s", res.outString.c_str());
+    return true;
+    }
 
 /*
  * @brief The main routine that generates
@@ -80,6 +94,7 @@ int main(int argc, char **argv) {
 // %Tag(NODEHANDLE)%
   ros::NodeHandle n;
 // %EndTag(NODEHANDLE)%
+  ros::ServiceServer service = n.advertiseService("change_string", modifyText);
 
   /**
    * The advertise() function is how you tell ROS that you want to
@@ -100,10 +115,12 @@ int main(int argc, char **argv) {
    */
 // %Tag(PUBLISHER)%
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
+  
 // %EndTag(PUBLISHER)%
 
+
 // %Tag(LOOP_RATE)%
-  ros::Rate loop_rate(10);
+  ros::Rate loop_rate(std::atoi(argv[1]));
 // %EndTag(LOOP_RATE)%
 
   /**
@@ -119,10 +136,7 @@ int main(int argc, char **argv) {
      */
 // %Tag(FILL_MESSAGE)%
     std_msgs::String msg;
-
-    std::stringstream ss;
-    ss << "My name is Venkatraman " << count;
-    msg.data = ss.str();
+    msg.data = message.c_str();
 // %EndTag(FILL_MESSAGE)%
 
 // %Tag(ROSCONSOLE)%
