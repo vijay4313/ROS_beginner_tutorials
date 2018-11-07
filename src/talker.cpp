@@ -64,8 +64,7 @@ bool modifyText(beginner_tutorials::changeText::Request  &req,
                 beginner_tutorials::changeText::Response &res) {
     if (req.inpString.empty()) {
       ROS_ERROR_STREAM("No string specified");
-    }
-    else {
+    } else {
       message = req.inpString;
       ROS_WARN_STREAM("The Publisher Text changed");
     }
@@ -131,8 +130,7 @@ int rate = std::atoi(argv[1]);
 if (rate <= 0) {
   ROS_FATAL_STREAM("The publisher rate has been set to 0 (or lesser)");
   rate = 10;
-}
-else {
+} else {
   ROS_DEBUG_STREAM("The publisher rate changed to");
 }
 // %Tag(LOOP_RATE)%
