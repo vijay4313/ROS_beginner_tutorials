@@ -72,5 +72,5 @@ In a new terminal
 ```
 rqt_console
 ```
-![RQT_CONSOLE_OUTPUT]{https://github.com/vijay4313/ROS_beginner_tutorials/blob/Week10_HW/images/beginner_tutorials_rqt_console.png}
+![RQT_CONSOLE_OUTPUT](https://github.com/vijay4313/ROS_beginner_tutorials/blob/Week10_HW/images/beginner_tutorials_rqt_console.png)
 
