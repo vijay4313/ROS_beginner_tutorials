@@ -19,7 +19,7 @@ cd ~/catkin_ws/
 catkin_make
 source devel/setup.bash
 cd src/
-git clone -b Week10_HW --recursivehttps://github.com/vijay4313/ROS_beginner_tutorials.git
+git clone -b Week10_HW --recursive https://github.com/vijay4313/ROS_beginner_tutorials.git
 cd ..
 catkin_make
 ```
