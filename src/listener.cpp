@@ -31,6 +31,8 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+
+
 /**
  *
  *  @file    listener.cpp
@@ -76,6 +78,7 @@ int main(int argc, char **argv) {
    * NodeHandle destructed will close down the node.
    */
   ros::NodeHandle n;
+
 
   /**
    * The subscribe() call is how you tell ROS that you want to receive messages
