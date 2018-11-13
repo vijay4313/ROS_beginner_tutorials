@@ -1,0 +1,5 @@
+<launch>
+	<arg name = "changeFreq" default = "10"/>
+	<node pkg="beginner_tutorials" name="talk1" type="talker" output="screen" launch-prefix="xterm -e" ns= "talker" args = "$(arg changeFreq)"/>
+	<node pkg="beginner_tutorials" name="list1" type="listener" output="screen" launch-prefix="xterm -e" ns = "listener" args = "$(arg changeFreq)"/>
+</launch>

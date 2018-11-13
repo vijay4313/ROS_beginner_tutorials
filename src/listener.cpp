@@ -31,6 +31,8 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+
+
 /**
  *
  *  @file    listener.cpp
@@ -77,6 +79,7 @@ int main(int argc, char **argv) {
    */
   ros::NodeHandle n;
 
+
   /**
    * The subscribe() call is how you tell ROS that you want to receive messages
    * on a given topic.  This invokes a call to the ROS
@@ -93,7 +96,7 @@ int main(int argc, char **argv) {
    * away the oldest ones.
    */
 // %Tag(SUBSCRIBER)%
-  ros::Subscriber sub = n.subscribe("chatter", 1000, chatterCallback);
+  ros::Subscriber sub = n.subscribe("/talker/chatter", 1000, chatterCallback);
 // %EndTag(SUBSCRIBER)%
 
   /**

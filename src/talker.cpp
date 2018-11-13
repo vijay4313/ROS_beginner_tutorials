@@ -35,7 +35,7 @@
  *  @file    talker.cpp
  *  @author  Venkatraman Narayanan (vijay4313)
  *  @copyright	MIT
- *  @date    10/30/2018
+ *  @date    11/06/2018
  *
  *  @brief	A simple ROS Publisher
  *
@@ -45,9 +45,32 @@
  */
 
 #include <sstream>
+#include <cstdlib>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
+#include "beginner_tutorials/changeText.h"
 
+// String to be published
+std::string message = "My name is Venkat";
+
+
+/*
+ * @brief The routine that modifies
+ * 	  the published text	  
+ * @param req - The change request string
+ * 	  res - change request response string
+ */
+bool modifyText(beginner_tutorials::changeText::Request  &req,
+                beginner_tutorials::changeText::Response &res) {
+    if (req.inpString.empty()) {
+      ROS_ERROR_STREAM("No string specified");
+    } else {
+      message = req.inpString;
+      ROS_WARN_STREAM("The Publisher Text changed");
+    }
+    res.outString = "The user changed the message to: " + req.inpString;
+    return true;
+    }
 
 /*
  * @brief The main routine that generates
@@ -80,6 +103,7 @@ int main(int argc, char **argv) {
 // %Tag(NODEHANDLE)%
   ros::NodeHandle n;
 // %EndTag(NODEHANDLE)%
+  ros::ServiceServer service = n.advertiseService("change_string", modifyText);
 
   /**
    * The advertise() function is how you tell ROS that you want to
@@ -102,8 +126,15 @@ int main(int argc, char **argv) {
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
 // %EndTag(PUBLISHER)%
 
+int rate = std::atoi(argv[1]);
+if (rate <= 0) {
+  ROS_FATAL_STREAM("The publisher rate has been set to 0 (or lesser)");
+  rate = 10;
+} else {
+  ROS_DEBUG_STREAM("The publisher rate changed to");
+}
 // %Tag(LOOP_RATE)%
-  ros::Rate loop_rate(10);
+  ros::Rate loop_rate(rate);
 // %EndTag(LOOP_RATE)%
 
   /**
@@ -119,14 +150,11 @@ int main(int argc, char **argv) {
      */
 // %Tag(FILL_MESSAGE)%
     std_msgs::String msg;
-
-    std::stringstream ss;
-    ss << "My name is Venkatraman " << count;
-    msg.data = ss.str();
+    msg.data = message.c_str();
 // %EndTag(FILL_MESSAGE)%
 
 // %Tag(ROSCONSOLE)%
-    ROS_INFO("%s", msg.data.c_str());
+    ROS_INFO_STREAM(msg.data.c_str());
 // %EndTag(ROSCONSOLE)%
 
     /**

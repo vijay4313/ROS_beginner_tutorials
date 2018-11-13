@@ -1,0 +1,5 @@
+#request
+string inpString
+---
+#response
+string outString
