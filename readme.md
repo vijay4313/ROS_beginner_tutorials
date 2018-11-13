@@ -35,13 +35,13 @@ This initiates the ROS system and its dependencies
 2. Run the talker (Publisher) in a new terminal
 ```
 cd ~catkin_ws
-source .devel/setup.bash
+source ./devel/setup.bash
 rosrun beginner_tutorials talker
 ```
 3. Run the listener (Subscriber) in a new terminal
 ```
 cd ~catkin_ws
-source .devel/setup.bash
+source ./devel/setup.bash
 rosrun beginner_tutorials listener
 ```
 Stop the program by typing Ctrl+C in each terminal
