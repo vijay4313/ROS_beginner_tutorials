@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(beginner_tutorials)
 
 ## Find catkin and any catkin packages
-find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs genmsg std_srvs message_generation)
+find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs genmsg std_srvs message_generation tf)
 
 ## Declare ROS messages and services
 add_service_files(FILES changeText.srv)
