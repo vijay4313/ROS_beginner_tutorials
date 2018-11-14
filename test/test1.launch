@@ -1,0 +1,5 @@
+<launch>
+  <arg name = "changeFreq" default = "10"/>
+  <node pkg="beginner_tutorials" name="talk1" type="talker" output="screen" launch-prefix="xterm -e" args = "$(arg changeFreq)"/>
+  <test pkg="beginner_tutorials" test-name="test1" type="rostest1"/>
+</launch>
