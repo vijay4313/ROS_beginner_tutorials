@@ -89,7 +89,7 @@ int main(int argc, char **argv) {
   tf::Transform transform;  // frame transform handler
   // Publish talker message
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
-  int rate = std::atoi(argv[1]);  // Set publishing rate 
+  int rate = std::atoi(argv[1]);  // Set publishing rate
   if (rate <= 0) {
     ROS_FATAL_STREAM("The publisher rate has been set to 0 (or lesser)");
     rate = 10;
@@ -120,9 +120,10 @@ int main(int argc, char **argv) {
       */
       chatter_pub.publish(msg);
       // Publish Tf info
-      transform.setOrigin( tf::Vector3(2.0, 3.0, 5.0) );
+      transform.setOrigin(tf::Vector3(2.0, 3.0, 5.0));
       transform.setRotation(tf::Quaternion(0.2, 0.1, 0.1, 1));
-      br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "talker"));
+      br.sendTransform(tf::StampedTransform(transform,
+      ros::Time::now(), "world", "talker"));
       ros::spinOnce();
       loop_rate.sleep();
       ++count;

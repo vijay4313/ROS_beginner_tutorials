@@ -1,8 +1,9 @@
-venkatraman@venkatraman-Inspiron-5447:~/Desktop/ENPM808/HW/Week8/catkin_ws/src$ cpplint --recursive --extension=cpp,h,hpp ./beginner_tutorials
-Done processing beginner_tutorials/src/listener.cpp
-beginner_tutorials/src/talker.cpp:54:  Static/global string variables are not permitted.  [runtime/string] [4]
-beginner_tutorials/src/talker.cpp:63:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::changeText::Request  &req  [runtime/references] [2]
-beginner_tutorials/src/talker.cpp:64:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::changeText::Response &res  [runtime/references] [2]
-Done processing beginner_tutorials/src/talker.cpp
-Total errors found: 3
+venkatraman@venkatraman-Inspiron-5447:~/Desktop/ENPM808/HW/Week8/catkin_ws$ cpplint --recursive --extension=cpp,h,hpp ./src/beginner_tutorials
+Done processing src/beginner_tutorials/src/listener.cpp
+Done processing src/beginner_tutorials/test/test.cpp
+Done processing src/beginner_tutorials/test/main.cpp
+src/beginner_tutorials/src/talker.cpp:64:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::changeText::Request  &req  [runtime/references] [2]
+src/beginner_tutorials/src/talker.cpp:65:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::changeText::Response &res  [runtime/references] [2]
+Done processing src/beginner_tutorials/src/talker.cpp
+Total errors found: 2
 

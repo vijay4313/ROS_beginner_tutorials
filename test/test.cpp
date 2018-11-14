@@ -47,23 +47,24 @@
 #include <ros/ros.h>
 #include <gtest/gtest.h>
 #include "ros/service_client.h"
-#include "std_srvs/Trigger.h"
-#include "std_msgs/String.h"
-#include <beginner_tutorials/changeText.h>
+#include "beginner_tutorials/changeText.h"
 
 
 TEST(talkerNodeService, customMessageExistance) {
   ros::NodeHandle nh;  // Generate a ROS node handler
-  auto client = nh.serviceClient<beginner_tutorials::changeText>("change_string");
+  auto client = nh.serviceClient<beginner_tutorials::changeText>(
+    "change_string");
   // Check if the service client is available
   EXPECT_TRUE(client.waitForExistence(ros::Duration(5)));
 }
 
 TEST(talkerNodeService, customMessageSuccess) {
-  ros::NodeHandle nh;  // Generate a ROS node handler
-  auto client = nh.serviceClient<beginner_tutorials::changeText>("change_string");
+  ros::NodeHandle nh;  // Create a ROS node handler
+  auto client = nh.serviceClient<beginner_tutorials::changeText>(
+    "change_string");
   beginner_tutorials::changeText msg;  // Create a placeholder for message
   msg.request.inpString = "ENPM808";  // Change the message
   client.call(msg.request, msg.response);
-  EXPECT_STREQ("The user changed the message to: ENPM808", msg.response.outString.c_str());
+  EXPECT_STREQ("The user changed the message to: ENPM808",
+   msg.response.outString.c_str());
 }
