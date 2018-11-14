@@ -35,7 +35,7 @@
  *  @file    talker.cpp
  *  @author  Venkatraman Narayanan (vijay4313)
  *  @copyright	MIT
- *  @date    11/06/2018
+ *  @date    11/13/2018
  *
  *  @brief	A simple ROS Publisher
  *
@@ -52,7 +52,7 @@
 #include "beginner_tutorials/changeText.h"
 
 // String to be published
-std::string message = "My name is Venkat";
+extern std::string message = "My name is Venkat";
 
 
 /*
@@ -85,11 +85,11 @@ int main(int argc, char **argv) {
   ros::init(argc, argv, "talker");
   ros::NodeHandle n;
   ros::ServiceServer service = n.advertiseService("change_string", modifyText);
-  tf::TransformBroadcaster br;
-  tf::Transform transform;
-
+  tf::TransformBroadcaster br;  // frame transform broadcaster
+  tf::Transform transform;  // frame transform handler
+  // Publish talker message
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
-  int rate = std::atoi(argv[1]);
+  int rate = std::atoi(argv[1]);  // Set publishing rate 
   if (rate <= 0) {
     ROS_FATAL_STREAM("The publisher rate has been set to 0 (or lesser)");
     rate = 10;
@@ -123,7 +123,6 @@ int main(int argc, char **argv) {
       transform.setOrigin( tf::Vector3(2.0, 3.0, 5.0) );
       transform.setRotation(tf::Quaternion(0.2, 0.1, 0.1, 1));
       br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "talker"));
-
       ros::spinOnce();
       loop_rate.sleep();
       ++count;

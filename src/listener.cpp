@@ -31,14 +31,12 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-
-
 /**
  *
  *  @file    listener.cpp
  *  @author  Venkatraman Narayanan (vijay4313)
  *  @copyright	3-clause BSD
- *  @date    10/30/2018
+ *  @date    11/13/2018
  *
  *  @brief	A simple ROS Subscriber
  *
