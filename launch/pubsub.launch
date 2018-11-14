@@ -1,5 +1,9 @@
 <launch>
 	<arg name = "changeFreq" default = "10"/>
+	<arg name = "record" default = "0" />
 	<node pkg="beginner_tutorials" name="talk1" type="talker" output="screen" launch-prefix="xterm -e" args = "$(arg changeFreq)"/>
 	<node pkg="beginner_tutorials" name="list1" type="listener" output="screen" launch-prefix="xterm -e" args = "$(arg changeFreq)"/>
+	<group if = "$(arg record)">
+      		<node name="record_beginner_tutorials" pkg="rosbag" type="record" args="-a -O record_beginner_tutorials.bag --duration=20"/>
+    	</group>
 </launch>
